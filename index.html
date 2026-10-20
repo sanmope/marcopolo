@@ -93,6 +93,24 @@
   .info .dato { border-left: 3px solid var(--gold); padding-left: 12px; font-style: italic; }
   .info button { font: inherit; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; text-decoration: underline; }
   .pieza-tag { display: inline-block; margin-top: 6px; font-size: .8rem; padding: 2px 10px; border-radius: 999px; background: var(--chip); }
+  .croquis-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 12px 0 16px; }
+  #croquis { width: 100%; min-width: 640px; height: auto; display: block; }
+  #croquis .c-sala { fill: none; stroke: var(--ink); stroke-width: 4; }
+  #croquis .c-pasillo { fill: url(#paso); }
+  #croquis .c-rayado { stroke: var(--line); stroke-width: 3; }
+  #croquis .c-mesa { fill: var(--chip); stroke: var(--gold); stroke-width: 2; }
+  #croquis .c-silla { fill: var(--surface); stroke: var(--muted); stroke-width: 2; }
+  #croquis .c-aparador { fill: var(--chip); stroke: var(--muted); stroke-width: 2; stroke-dasharray: 6 4; }
+  #croquis .c-olla { fill: var(--accent); fill-opacity: .18; stroke: var(--accent); stroke-width: 2.5; }
+  #croquis .c-yy { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+  #croquis .c-div { stroke: var(--gold); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  #croquis .c-cota { stroke: var(--muted); stroke-width: 1.2; }
+  #croquis .c-flecha { fill: var(--muted); }
+  #croquis text { font-family: Inter, system-ui, sans-serif; }
+  #croquis .c-txt { font-size: 14px; fill: var(--ink); }
+  #croquis .c-tenue { font-size: 14px; fill: var(--muted); font-style: italic; }
+  #croquis .c-cotatxt { font-size: 13px; fill: var(--muted); }
+  #croquis-notas .card ul { margin: 6px 0 0; padding-left: 18px; }
   .sub-h { margin: 8px 0 14px; }
   @media (max-width: 640px) { .mapa svg { width: 760px; } }
 </style>
@@ -105,6 +123,7 @@
     <p class="lede">Un evento recurrente que sigue el viaje de Marco Polo (1271–1295): en cada edición cocinamos recetas inspiradas en un lugar que visitó y armamos un número artístico de ese lugar.</p>
     <nav>
       <a href="#cuando">Cuándo y qué</a>
+      <a href="#mesas">Mesas</a>
       <a href="#ruta">Rompecabezas y ruta</a>
       <a href="#acciones">Acciones</a>
       <a href="#colaborar">Cómo sumar ideas</a>
@@ -116,6 +135,17 @@
   <section id="cuando">
     <h2>Cuándo y qué</h2>
     <div class="grid2" id="resumen"></div>
+  </section>
+
+  <section id="mesas">
+    <h2>Logística · mesas para el hot pot</h2>
+    <p class="meta">Croquis a escala del espacio de 4 × 8 m. La regla del hot pot: nadie debería estar a más de ~60 cm de su olla, así que conviene una mesa angosta (90 cm) con las ollas en fila por el centro.</p>
+    <div class="filters" id="variante">
+      <button class="on" data-v="5">5 ollas · 20 personas (recomendado)</button>
+      <button data-v="3">3 ollas · 18 personas</button>
+    </div>
+    <div class="croquis-wrap"><svg id="croquis" role="img" aria-label="Croquis de mesas"></svg></div>
+    <div class="grid2" id="croquis-notas"></div>
   </section>
 
   <section id="ruta">
@@ -256,6 +286,75 @@ function mostrarInfo(l, pieza) {
     ${l.dato ? `<p class="dato">${esc(l.dato)}</p>` : ""}
     ${esParada ? `<p class="meta">Ingredientes: ${l.ingredientes.map(esc).join(", ")}</p><button onclick="abrirParada({id:'${l.id}'})">Ver recetas e ideas →</button>` : ""}`;
 }
+
+// Croquis de mesas (unidades en cm)
+const CROQUIS = {
+  sala: [800, 400], mesa: { x: 130, y: 155, l: 600, a: 90 }, aparador: { x: 0, y: 120, l: 45, a: 160 },
+  variantes: {
+    5: { porLado: 10, porOlla: 4, nota: "Cada olla para 4 (dos de cada lado, enfrentados): todos llegan cómodos y se pueden tener 5 caldos distintos (o ollas yin-yang con dos caldos cada una)." },
+    3: { porLado: 9, porOlla: 6, nota: "Cada olla para 6 (tres de cada lado). Menos anafes y menos consumo, pero los de las puntas de cada grupo quedan a ~75 cm de la olla." },
+  },
+};
+
+function dibujarCroquis(v) {
+  const { sala: [W, H], mesa: m, aparador: ap } = CROQUIS;
+  const conf = CROQUIS.variantes[v];
+  const paso = m.l / conf.porLado, silla = 44;
+  const o = [];
+  const r = (x, y, w, h, cls, extra = "") => o.push(`<rect x="${x}" y="${y}" width="${w}" height="${h}" class="${cls}" ${extra}/>`);
+  const t = (x, y, s, cls = "c-txt", anchor = "middle") => o.push(`<text x="${x}" y="${y}" class="${cls}" text-anchor="${anchor}">${s}</text>`);
+  const cota = (x1, y1, x2, y2, s, dx = 0, dy = 0) => {
+    o.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="c-cota" marker-start="url(#fl)" marker-end="url(#fl)"/>`);
+    t((x1 + x2) / 2 + dx, (y1 + y2) / 2 + dy, s, "c-cotatxt");
+  };
+  o.push(`<defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-flecha"/></marker>
+    <pattern id="paso" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" class="c-rayado"/></pattern></defs>`);
+  r(0, 0, W, H, "c-sala");
+  // pasillos
+  r(0, 0, W, m.y - silla - 10, "c-pasillo"); r(0, m.y + m.a + silla + 10, W, H - (m.y + m.a + silla + 10), "c-pasillo");
+  t(W / 2, (m.y - silla - 10) / 2 + 5, "pasillo ≈ 1 m", "c-tenue"); t(W / 2, (H + m.y + m.a + silla + 10) / 2 + 5, "pasillo ≈ 1 m", "c-tenue");
+  // aparador
+  r(ap.x, ap.y, ap.l, ap.a, "c-aparador"); o.push(`<text x="${ap.x + 27}" y="${ap.y + ap.a / 2}" class="c-txt" text-anchor="middle" transform="rotate(-90 ${ap.x + 27} ${ap.y + ap.a / 2})">aparador / reposición</text>`);
+  // mesa
+  r(m.x, m.y, m.l, m.a, "c-mesa", 'rx="4"');
+  // sillas
+  for (let i = 0; i < conf.porLado; i++) {
+    const cx = m.x + paso * (i + 0.5);
+    r(cx - silla / 2, m.y - silla - 4, silla, silla, "c-silla", 'rx="6"');
+    r(cx - silla / 2, m.y + m.a + 4, silla, silla, "c-silla", 'rx="6"');
+  }
+  // ollas
+  const nOllas = (conf.porLado * 2) / conf.porOlla, grupo = conf.porOlla / 2;
+  for (let k = 0; k < nOllas; k++) {
+    const cx = m.x + paso * grupo * (k + 0.5), cy = m.y + m.a / 2;
+    if (k > 0) o.push(`<line x1="${m.x + paso * grupo * k}" y1="${m.y + 8}" x2="${m.x + paso * grupo * k}" y2="${m.y + m.a - 8}" class="c-div"/>`);
+    o.push(`<circle cx="${cx}" cy="${cy}" r="17" class="c-olla"/><path d="M${cx},${cy - 17} q9,8.5 0,17 t0,17" class="c-yy"/>`);
+  }
+  // cotas
+  cota(0, H + 28, W, H + 28, "8 m (o un poco más)", 0, 18);
+  cota(W + 28, 0, W + 28, H, "4 m", 22, 4);
+  cota(m.x, m.y + m.a + silla + 22, m.x + m.l, m.y + m.a + silla + 22, `mesa ${m.l / 100} × ${String(m.a / 100).replace(".", ",")} m`, 0, 18);
+  cota(m.x + m.l + 18, m.y, m.x + m.l + 18, m.y + m.a, "90", 16, 4);
+  cota(m.x, m.y - silla - 26, m.x + paso, m.y - silla - 26, `${Math.round(paso)} cm`, 0, -6);
+  cota(ap.l, m.y + m.a / 2, m.x, m.y + m.a / 2, `${m.x - ap.l}`, 0, -6);
+  document.getElementById("croquis").setAttribute("viewBox", `-20 -20 ${W + 90} ${H + 80}`);
+  document.getElementById("croquis").innerHTML = o.join("");
+  const total = conf.porLado * 2;
+  document.getElementById("croquis-notas").innerHTML = `
+    <div class="card"><div class="label">Capacidad</div><div class="big">${total} personas</div><div class="meta">${nOllas} ollas · ${conf.porOlla} por olla · ${Math.round(paso)} cm por persona</div><p>${conf.nota}</p></div>
+    <div class="card"><div class="label">Qué hace falta</div><ul>
+      <li>Una mesa larga de ${m.l / 100} × 0,9 m: por ejemplo 3 tablones de 2 × 0,9 m, o 4 mesas de 1,5 × 0,9 m.</li>
+      <li>${total} sillas sin apoyabrazos (entran más juntas).</li>
+      <li>${nOllas} ollas (mejor con divisor yin-yang, Ø 28–30 cm) y ${nOllas} anafes.</li>
+      <li>Por cada olla: colador-cucharón, palillos, bowls, platitos para salsas.</li></ul></div>
+    <div class="card"><div class="label">Ojo con la energía</div><ul>
+      <li>Un anafe de inducción gasta ~1.500–2.000 W: ${nOllas} juntos son ${(nOllas * 1.5).toFixed(1).replace(".", ",")}–${nOllas * 2} kW. Un circuito común de casa aguanta ~2,2 kW (10 A) o ~3,5 kW (16 A) → hay que repartir en varios circuitos o bajar la potencia.</li>
+      <li>Anafes a cartucho de gas: no dependen de la instalación, pero necesitan buena ventilación.</li>
+      <li>Alargues: que vayan por debajo de la mesa, nunca cruzando los pasillos.</li></ul></div>`;
+  document.querySelectorAll("#variante button").forEach(b => b.classList.toggle("on", b.dataset.v === String(v)));
+}
+document.getElementById("variante").addEventListener("click", e => { if (e.target.dataset.v) dibujarCroquis(e.target.dataset.v); });
+dibujarCroquis(5);
 
 function abrirParada(p) {
   const li = document.getElementById("p-" + p.id);

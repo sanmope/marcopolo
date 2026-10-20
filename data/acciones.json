@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "tarea": "Decidir cupo de invitados y cómo se reparten los costos",
+      "tarea": "Decidir cupo de invitados (máx. ~20 en el espacio de 4×8 con una mesa larga) y cómo se reparten los costos",
       "tipo": "logistica",
       "responsable": "",
       "fecha_limite": "2026-10-29",
@@ -74,7 +74,7 @@
     },
     {
       "id": 10,
-      "tarea": "Conseguir equipo de hot pot: anafes/ollas con divisor, cucharitas-colador",
+      "tarea": "Conseguir 5 ollas (ideal yin-yang) y 5 anafes, coladores-cucharón, bowls y palillos",
       "tipo": "logistica",
       "responsable": "",
       "fecha_limite": "2026-11-08",
@@ -158,6 +158,30 @@
       "tipo": "recetas",
       "responsable": "",
       "fecha_limite": "2026-11-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": 21,
+      "tarea": "Conseguir mesas para armar una mesa larga de 6 × 0,9 m (3 tablones de 2 m o 4 mesas de 1,5 m) y 20 sillas sin apoyabrazos",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-11-08",
+      "estado": "pendiente"
+    },
+    {
+      "id": 22,
+      "tarea": "Revisar la instalación eléctrica (cuántos circuitos/enchufes cerca de la mesa) o decidir anafes a gas con ventilación",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-11-01",
+      "estado": "pendiente"
+    },
+    {
+      "id": 23,
+      "tarea": "Medir exacto el espacio y marcar puerta, ventanas y enchufes para ajustar el croquis",
+      "tipo": "logistica",
+      "responsable": "santi",
+      "fecha_limite": "2026-10-29",
       "estado": "pendiente"
     }
   ]
