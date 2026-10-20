@@ -35,15 +35,56 @@
       ],
       "recetas": [
         {
-          "nombre": "Jiaozi",
-          "notas": "Empanaditas hervidas.",
-          "propuesta_por": ""
+          "nombre": "Wantán (wonton)",
+          "momento": "entrada",
+          "notas": "",
+          "propuesta_por": "",
+          "elegida": true
+        },
+        {
+          "nombre": "Spring rolls",
+          "momento": "entrada",
+          "notas": "Rollitos primavera.",
+          "propuesta_por": "",
+          "elegida": true
+        },
+        {
+          "nombre": "Dumplings (jiaozi)",
+          "momento": "entrada",
+          "notas": "Empanaditas hervidas o al vapor.",
+          "propuesta_por": "",
+          "elegida": true
         },
         {
           "nombre": "Hot pot chino",
+          "momento": "principal",
           "notas": "Olla compartida en la mesa, con cordero cortado finito como en la leyenda de Kublai.",
           "propuesta_por": "",
           "elegida": true
+        },
+        {
+          "nombre": "Tangyuan",
+          "momento": "postre",
+          "notas": "Bolitas de arroz glutinoso rellenas de sésamo negro, en almíbar de jengibre.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Jian dui",
+          "momento": "postre",
+          "notas": "Bolitas fritas de arroz glutinoso cubiertas de sésamo, rellenas de pasta de poroto rojo.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Peras al vapor con miel",
+          "momento": "postre",
+          "notas": "Postre de invierno de Pekín.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Gelatina de almendras (xingren doufu)",
+          "momento": "postre",
+          "notas": "Fresca, liviana después del hot pot.",
+          "propuesta_por": ""
         },
         {
           "nombre": "Pato laqueado",

@@ -42,11 +42,11 @@
     },
     {
       "id": 6,
-      "tarea": "Armar el resto del menú chino alrededor del hot pot (caldos, cortes, salsas, entrada, postre, bebida)",
+      "tarea": "Menú de China: entradas (wantán, spring rolls, dumplings) y hot pot definidos",
       "tipo": "recetas",
       "responsable": "",
       "fecha_limite": "2026-11-05",
-      "estado": "pendiente"
+      "estado": "hecho"
     },
     {
       "id": 7,
@@ -150,6 +150,14 @@
       "tipo": "ambientacion",
       "responsable": "santi y kolo",
       "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 20,
+      "tarea": "Averiguar receta de postre chino (ideas en la parada: tangyuan, jian dui, peras al vapor, gelatina de almendras)",
+      "tipo": "recetas",
+      "responsable": "",
+      "fecha_limite": "2026-11-05",
       "estado": "pendiente"
     }
   ]

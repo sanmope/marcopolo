@@ -187,7 +187,7 @@ function renderResumen(v) {
     <div class="card"><div class="label">Próximo Marcopolo${ed ? " · #" + ed.n : ""}</div><div class="big">${p ? esc(p.lugar) : tbd()}</div><div class="meta">${p ? esc(p.nombre_antiguo) + " · " + esc(p.hoy) : ""}</div></div>
     <div class="card"><div class="label">Cuándo</div><div class="big">${ed && ed.fecha ? esc(fmt(ed.fecha)) : tbd()}</div><div class="meta">${ed && ed.hora ? esc(ed.hora) + " · " : ""}Frecuencia: ${v.evento.frecuencia === "por definir" ? tbd() : esc(v.evento.frecuencia)}</div></div>
     <div class="card"><div class="label">Dónde</div><div class="big">${!ed || ed.sede === "por definir" ? tbd() : esc(ed.sede)}</div></div>
-    <div class="card"><div class="label">Qué comemos</div>${menu.length ? `<div class="big">${menu.map(r => esc(r.nombre)).join("<br>")}</div><div class="meta">y lo que se sume alrededor</div>` : `<div class="big">${tbd("en brainstorming")}</div>`}</div>
+    <div class="card"><div class="label">Qué comemos</div>${menu.length ? ["entrada", "principal", "postre"].map(m => { const r = menu.filter(x => x.momento === m); return `<div class="meta">${m}</div><div style="margin-bottom:6px">${r.length ? r.map(x => esc(x.nombre)).join(" · ") : tbd()}</div>`; }).join("") : `<div class="big">${tbd("en brainstorming")}</div>`}</div>
     <div class="card"><div class="label">Número artístico</div>${arte.length ? "<ul>" + arte.map(r => `<li>${esc(r.idea)}</li>`).join("") + "</ul>" : `<div class="big">${tbd("en brainstorming")}</div>`}</div>`;
 }
 
@@ -211,7 +211,7 @@ function renderParadas(v) {
           <div class="label">Ingredientes</div>
           <div class="chips">${p.ingredientes.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div>
           <div class="label">Ideas de recetas</div>
-          <ul>${p.recetas.map(r => `<li><strong>${esc(r.nombre)}</strong>${star(r)}${r.notas ? " — " + esc(r.notas) : ""}${by(r)}</li>`).join("")}</ul>
+          <ul>${p.recetas.map(r => `<li>${r.momento ? `<span class="chip">${esc(r.momento)}</span> ` : ""}<strong>${esc(r.nombre)}</strong>${star(r)}${r.notas ? " — " + esc(r.notas) : ""}${by(r)}</li>`).join("")}</ul>
           <div class="label">Número artístico</div>
           <ul>${p.arte.map(r => `<li>${esc(r.idea)}${star(r)}${by(r)}</li>`).join("")}</ul>
           <a href="https://github.com/${REPO}/issues/new?template=receta.yml&title=${encodeURIComponent("[" + p.lugar + "] ")}" style="color:var(--accent)">+ Proponer receta</a> ·
