@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcopolo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f6f0e4; --surface: #fffaf0; --ink: #2b2118; --muted: #7a6a58;
@@ -77,6 +77,11 @@
   .how a, footer a { color: var(--accent); }
   footer { padding: 32px 0 48px; color: var(--muted); font-size: .85rem; }
   .err { color: var(--accent); }
+  .mapa { margin: 0 0 24px; }
+  .mapa svg { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 2px 14px rgba(60,40,20,.25); }
+  .mapa figcaption { color: var(--muted); font-size: .82rem; margin-top: 6px; }
+  .mapa-scroll { overflow-x: auto; }
+  @media (max-width: 640px) { .mapa svg { width: 760px; } }
 </style>
 </head>
 <body>
@@ -103,6 +108,10 @@
   <section id="ruta">
     <h2>La ruta · brainstorming</h2>
     <p class="meta">Cada parada es un posible Marcopolo. Abrí una para ver ideas de recetas, ingredientes y números artísticos.</p>
+    <figure class="mapa">
+      <div class="mapa-scroll"><svg id="mapa" role="img" aria-label="Mapa de la ruta de Marco Polo"></svg></div>
+      <figcaption>Tocá una parada del mapa para ver sus ideas. Nombres como los escribió Marco Polo en <em>Il Milione</em>.</figcaption>
+    </figure>
     <ol class="route" id="paradas"></ol>
   </section>
 
@@ -126,6 +135,9 @@
   <span id="repo-link"></span>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="js/mapa.js"></script>
 <script>
 const REPO = "sanmope/marcopolo";
 const fmt = d => d ? new Date(d + "T12:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) : null;
@@ -136,7 +148,7 @@ document.getElementById("lnk-issue").href = `https://github.com/${REPO}/issues/n
 document.getElementById("repo-link").innerHTML = `Repo: <a href="https://github.com/${REPO}">github.com/${REPO}</a>`;
 
 Promise.all([fetch("data/viajes.json").then(r => r.json()), fetch("data/acciones.json").then(r => r.json())])
-  .then(([v, a]) => { renderResumen(v); renderParadas(v); renderAcciones(a.acciones); })
+  .then(([v, a]) => { renderResumen(v); renderParadas(v); renderAcciones(a.acciones); dibujarMapa(document.getElementById("mapa"), v.paradas, abrirParada); })
   .catch(e => { document.getElementById("resumen").innerHTML = `<p class="err">No se pudieron cargar los datos (${esc(e.message)}). Si abrís el archivo localmente, usá <code>python3 -m http.server</code>.</p>`; });
 
 function renderResumen(v) {
@@ -175,6 +187,12 @@ function renderParadas(v) {
         </div>
       </details>
     </li>`).join("");
+}
+
+function abrirParada(p) {
+  const li = document.getElementById("p-" + p.id);
+  li.querySelector("details").open = true;
+  li.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderAcciones(items) {

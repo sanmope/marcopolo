@@ -15,17 +15,51 @@
       "contexto": "Marco sale con su padre Niccolò y su tío Maffeo. Venecia es la puerta del comercio de especias entre Oriente y Europa.",
       "estado": "elegida",
       "fecha": null,
-      "ingredientes": ["sardinas", "cebolla", "pasas", "piñones", "tinta de calamar", "arroz"],
+      "ingredientes": [
+        "sardinas",
+        "cebolla",
+        "pasas",
+        "piñones",
+        "tinta de calamar",
+        "arroz"
+      ],
       "recetas": [
-        { "nombre": "Sarde in saor", "notas": "Sardinas fritas en escabeche agridulce de cebolla, pasas y piñones.", "propuesta_por": "" },
-        { "nombre": "Risotto al nero di seppia", "notas": "Arroz negro con sepia.", "propuesta_por": "" },
-        { "nombre": "Bigoli in salsa", "notas": "Pasta gruesa con salsa de cebolla y anchoas.", "propuesta_por": "" },
-        { "nombre": "Frìtole", "notas": "Buñuelos de carnaval con pasas.", "propuesta_por": "" }
+        {
+          "nombre": "Sarde in saor",
+          "notas": "Sardinas fritas en escabeche agridulce de cebolla, pasas y piñones.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Risotto al nero di seppia",
+          "notas": "Arroz negro con sepia.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Bigoli in salsa",
+          "notas": "Pasta gruesa con salsa de cebolla y anchoas.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Frìtole",
+          "notas": "Buñuelos de carnaval con pasas.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Máscaras y escena de commedia dell'arte", "propuesta_por": "" },
-        { "idea": "Brindis de despedida: lectura del prólogo de Il Milione", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Máscaras y escena de commedia dell'arte",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Brindis de despedida: lectura del prólogo de Il Milione",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        12.34,
+        45.44
+      ],
+      "nombre_antiguo": "Venetia"
     },
     {
       "id": "acre",
@@ -36,14 +70,36 @@
       "contexto": "Puerto cruzado en el Levante. Buscan aceite del Santo Sepulcro de Jerusalén que Kublai Kan les había pedido.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["za'atar", "garbanzos", "lentejas", "sésamo", "aceite de oliva"],
+      "ingredientes": [
+        "za'atar",
+        "garbanzos",
+        "lentejas",
+        "sésamo",
+        "aceite de oliva"
+      ],
       "recetas": [
-        { "nombre": "Mujaddara", "notas": "Lentejas, arroz y cebolla caramelizada.", "propuesta_por": "" },
-        { "nombre": "Manaqish con za'atar", "notas": "Pan plano con za'atar y aceite.", "propuesta_por": "" }
+        {
+          "nombre": "Mujaddara",
+          "notas": "Lentejas, arroz y cebolla caramelizada.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Manaqish con za'atar",
+          "notas": "Pan plano con za'atar y aceite.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Música de oud", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Música de oud",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        35.07,
+        32.93
+      ],
+      "nombre_antiguo": "Acri"
     },
     {
       "id": "tabriz",
@@ -54,16 +110,45 @@
       "contexto": "Gran mercado persa bajo los mongoles iljánidas. Marco elogia sus sedas y sus comerciantes.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["azafrán", "granada", "nueces", "agua de rosas", "arroz"],
+      "ingredientes": [
+        "azafrán",
+        "granada",
+        "nueces",
+        "agua de rosas",
+        "arroz"
+      ],
       "recetas": [
-        { "nombre": "Fesenjan", "notas": "Guiso de pollo con nueces y melaza de granada.", "propuesta_por": "" },
-        { "nombre": "Tahdig", "notas": "Arroz con costra crocante y azafrán.", "propuesta_por": "" },
-        { "nombre": "Sholeh zard", "notas": "Postre de arroz con azafrán y agua de rosas.", "propuesta_por": "" }
+        {
+          "nombre": "Fesenjan",
+          "notas": "Guiso de pollo con nueces y melaza de granada.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Tahdig",
+          "notas": "Arroz con costra crocante y azafrán.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Sholeh zard",
+          "notas": "Postre de arroz con azafrán y agua de rosas.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Lectura de poesía persa", "propuesta_por": "" },
-        { "idea": "Danza persa", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Lectura de poesía persa",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Danza persa",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        46.29,
+        38.08
+      ],
+      "nombre_antiguo": "Tauris"
     },
     {
       "id": "ormuz",
@@ -74,14 +159,35 @@
       "contexto": "Querían embarcarse a China, pero los barcos «cosidos» sin clavos no les dieron confianza y siguieron por tierra.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["dátiles", "pescado", "lima seca", "cúrcuma"],
+      "ingredientes": [
+        "dátiles",
+        "pescado",
+        "lima seca",
+        "cúrcuma"
+      ],
       "recetas": [
-        { "nombre": "Pescado especiado con lima seca", "notas": "", "propuesta_por": "" },
-        { "nombre": "Dátiles rellenos", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Pescado especiado con lima seca",
+          "notas": "",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Dátiles rellenos",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Barquito «cosido» como centro de mesa", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Barquito «cosido» como centro de mesa",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        56.46,
+        27.1
+      ],
+      "nombre_antiguo": "Cormos"
     },
     {
       "id": "balj",
@@ -92,15 +198,41 @@
       "contexto": "Ciudad antigua arrasada por Gengis Kan. Marco se queda un año en las montañas reponiéndose de una enfermedad.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["cordero", "zanahoria", "pasas", "yogur", "puerro"],
+      "ingredientes": [
+        "cordero",
+        "zanahoria",
+        "pasas",
+        "yogur",
+        "puerro"
+      ],
       "recetas": [
-        { "nombre": "Kabuli palaw", "notas": "Arroz con cordero, zanahoria y pasas.", "propuesta_por": "" },
-        { "nombre": "Mantu", "notas": "Empanaditas al vapor con yogur.", "propuesta_por": "" },
-        { "nombre": "Bolani", "notas": "Pan relleno de papa y puerro.", "propuesta_por": "" }
+        {
+          "nombre": "Kabuli palaw",
+          "notas": "Arroz con cordero, zanahoria y pasas.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Mantu",
+          "notas": "Empanaditas al vapor con yogur.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Bolani",
+          "notas": "Pan relleno de papa y puerro.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Música de rubab", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Música de rubab",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        66.9,
+        36.76
+      ],
+      "nombre_antiguo": "Balac"
     },
     {
       "id": "kashgar",
@@ -111,16 +243,45 @@
       "contexto": "Cruzan «el techo del mundo» (donde describe a la oveja que hoy lleva su nombre: Ovis ammon polii) y llegan a los oasis de la Ruta de la Seda.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["comino", "cordero", "fideos estirados", "ajo", "melón"],
+      "ingredientes": [
+        "comino",
+        "cordero",
+        "fideos estirados",
+        "ajo",
+        "melón"
+      ],
       "recetas": [
-        { "nombre": "Laghman", "notas": "Fideos estirados a mano con salteado.", "propuesta_por": "" },
-        { "nombre": "Samsa", "notas": "Empanadas horneadas de cordero.", "propuesta_por": "" },
-        { "nombre": "Brochetas de cordero al comino", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Laghman",
+          "notas": "Fideos estirados a mano con salteado.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Samsa",
+          "notas": "Empanadas horneadas de cordero.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Brochetas de cordero al comino",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Muqam uigur", "propuesta_por": "" },
-        { "idea": "Show de estirar fideos en vivo", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Muqam uigur",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Show de estirar fideos en vivo",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        75.99,
+        39.47
+      ],
+      "nombre_antiguo": "Cascar"
     },
     {
       "id": "gobi",
@@ -131,15 +292,39 @@
       "contexto": "Un mes de travesía. Marco cuenta de voces de espíritus que llaman a los viajeros que se quedan atrás.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["cordero", "leche fermentada", "masa", "cebolla"],
+      "ingredientes": [
+        "cordero",
+        "leche fermentada",
+        "masa",
+        "cebolla"
+      ],
       "recetas": [
-        { "nombre": "Buuz", "notas": "Empanaditas mongolas al vapor.", "propuesta_por": "" },
-        { "nombre": "Khuushuur", "notas": "Empanadas fritas.", "propuesta_por": "" }
+        {
+          "nombre": "Buuz",
+          "notas": "Empanaditas mongolas al vapor.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Khuushuur",
+          "notas": "Empanadas fritas.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Canto de garganta (khöömei)", "propuesta_por": "" },
-        { "idea": "Relato a oscuras de las «voces del desierto»", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Canto de garganta (khöömei)",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Relato a oscuras de las «voces del desierto»",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        94.66,
+        40.14
+      ],
+      "nombre_antiguo": "Desertum Lop"
     },
     {
       "id": "khanbaliq",
@@ -150,16 +335,45 @@
       "contexto": "Llegan a la corte de Kublai Kan: el palacio de verano de Xanadu y la capital Khanbaliq, hoy Pekín.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["pato", "cerdo", "jengibre", "cebolla de verdeo", "harina"],
+      "ingredientes": [
+        "pato",
+        "cerdo",
+        "jengibre",
+        "cebolla de verdeo",
+        "harina"
+      ],
       "recetas": [
-        { "nombre": "Jiaozi", "notas": "Empanaditas hervidas.", "propuesta_por": "" },
-        { "nombre": "Hot pot de cordero", "notas": "Olla compartida en la mesa.", "propuesta_por": "" },
-        { "nombre": "Pato laqueado", "notas": "Anacrónico, pero es Pekín.", "propuesta_por": "" }
+        {
+          "nombre": "Jiaozi",
+          "notas": "Empanaditas hervidas.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Hot pot de cordero",
+          "notas": "Olla compartida en la mesa.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Pato laqueado",
+          "notas": "Anacrónico, pero es Pekín.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Recitado de «Kubla Khan» de Coleridge", "propuesta_por": "" },
-        { "idea": "Banquete ceremonial con el Kan", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Recitado de «Kubla Khan» de Coleridge",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Banquete ceremonial con el Kan",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        116.4,
+        39.9
+      ],
+      "nombre_antiguo": "Cambaluc"
     },
     {
       "id": "hangzhou",
@@ -170,16 +384,44 @@
       "contexto": "Para Marco, «la ciudad más noble y espléndida del mundo». Le asombran el papel moneda, los canales y el lago del Oeste.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["té verde", "pescado de agua dulce", "panceta", "vinagre negro"],
+      "ingredientes": [
+        "té verde",
+        "pescado de agua dulce",
+        "panceta",
+        "vinagre negro"
+      ],
       "recetas": [
-        { "nombre": "Pescado del lago del Oeste en salsa de vinagre", "notas": "", "propuesta_por": "" },
-        { "nombre": "Cerdo Dongpo", "notas": "Panceta estofada lentamente.", "propuesta_por": "" },
-        { "nombre": "Langostinos con té Longjing", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Pescado del lago del Oeste en salsa de vinagre",
+          "notas": "",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Cerdo Dongpo",
+          "notas": "Panceta estofada lentamente.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Langostinos con té Longjing",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Ceremonia del té", "propuesta_por": "" },
-        { "idea": "Invitaciones o «entradas» impresas como papel moneda del Kan", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Ceremonia del té",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Invitaciones o «entradas» impresas como papel moneda del Kan",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        120.16,
+        30.27
+      ],
+      "nombre_antiguo": "Quinsai"
     },
     {
       "id": "yunnan",
@@ -190,13 +432,30 @@
       "contexto": "Misión como enviado del Kan al suroeste. Describe cocodrilos, conchas usadas como moneda y la costumbre de comer carne cruda.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["fideos de arroz", "hongos", "pimienta de Sichuan", "hierbas frescas"],
+      "ingredientes": [
+        "fideos de arroz",
+        "hongos",
+        "pimienta de Sichuan",
+        "hierbas frescas"
+      ],
       "recetas": [
-        { "nombre": "Guoqiao mixian («fideos cruzando el puente»)", "notas": "Caldo hirviendo que cocina los ingredientes en la mesa.", "propuesta_por": "" }
+        {
+          "nombre": "Guoqiao mixian («fideos cruzando el puente»)",
+          "notas": "Caldo hirviendo que cocina los ingredientes en la mesa.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Mesa de conchas como moneda para «pagar» los platos", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Mesa de conchas como moneda para «pagar» los platos",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        102.71,
+        25.04
+      ],
+      "nombre_antiguo": "Caraian"
     },
     {
       "id": "sumatra",
@@ -207,15 +466,40 @@
       "contexto": "Vuelven por mar escoltando a la princesa Kököchin. Cinco meses esperando los monzones.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["coco", "galanga", "lemongrass", "pimienta", "sagú"],
+      "ingredientes": [
+        "coco",
+        "galanga",
+        "lemongrass",
+        "pimienta",
+        "sagú"
+      ],
       "recetas": [
-        { "nombre": "Rendang", "notas": "Carne cocida largamente en coco y especias.", "propuesta_por": "" },
-        { "nombre": "Sate con salsa de maní", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Rendang",
+          "notas": "Carne cocida largamente en coco y especias.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Sate con salsa de maní",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Teatro de sombras (wayang)", "propuesta_por": "" },
-        { "idea": "Gamelan", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Teatro de sombras (wayang)",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Gamelan",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        97.2,
+        5.1
+      ],
+      "nombre_antiguo": "Giava Minore"
     },
     {
       "id": "ceilan",
@@ -226,14 +510,36 @@
       "contexto": "La isla de los rubíes y del pico de Adán. Marco habla de la canela y de las piedras preciosas del rey.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["canela", "coco", "harina de arroz", "pescado", "curry"],
+      "ingredientes": [
+        "canela",
+        "coco",
+        "harina de arroz",
+        "pescado",
+        "curry"
+      ],
       "recetas": [
-        { "nombre": "Hoppers (appa)", "notas": "Panqueques de arroz y coco en forma de cuenco.", "propuesta_por": "" },
-        { "nombre": "Curry de pescado con canela", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Hoppers (appa)",
+          "notas": "Panqueques de arroz y coco en forma de cuenco.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Curry de pescado con canela",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Danza kandyana", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Danza kandyana",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        79.86,
+        6.93
+      ],
+      "nombre_antiguo": "Seilan"
     },
     {
       "id": "malabar",
@@ -244,16 +550,45 @@
       "contexto": "La costa de la pimienta. Marco describe pescadores de perlas, brahmanes y templos.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["pimienta negra", "cardamomo", "coco", "tamarindo", "hojas de curry"],
+      "ingredientes": [
+        "pimienta negra",
+        "cardamomo",
+        "coco",
+        "tamarindo",
+        "hojas de curry"
+      ],
       "recetas": [
-        { "nombre": "Curry de pescado de Kerala", "notas": "", "propuesta_por": "" },
-        { "nombre": "Avial", "notas": "Verduras en coco y yogur.", "propuesta_por": "" },
-        { "nombre": "Payasam", "notas": "Postre de arroz con leche y cardamomo.", "propuesta_por": "" }
+        {
+          "nombre": "Curry de pescado de Kerala",
+          "notas": "",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Avial",
+          "notas": "Verduras en coco y yogur.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Payasam",
+          "notas": "Postre de arroz con leche y cardamomo.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Kathakali (maquillaje y gesto)", "propuesta_por": "" },
-        { "idea": "Búsqueda de «perlas» entre los platos", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Kathakali (maquillaje y gesto)",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Búsqueda de «perlas» entre los platos",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        76.6,
+        8.9
+      ],
+      "nombre_antiguo": "Melibar"
     },
     {
       "id": "trebisonda",
@@ -264,14 +599,35 @@
       "contexto": "Últimas escalas. En Trebisonda les roban parte de lo que traían.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["anchoas", "avellanas", "miel", "masa filo"],
+      "ingredientes": [
+        "anchoas",
+        "avellanas",
+        "miel",
+        "masa filo"
+      ],
       "recetas": [
-        { "nombre": "Hamsi (anchoas del mar Negro)", "notas": "", "propuesta_por": "" },
-        { "nombre": "Baklava de avellanas", "notas": "", "propuesta_por": "" }
+        {
+          "nombre": "Hamsi (anchoas del mar Negro)",
+          "notas": "",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Baklava de avellanas",
+          "notas": "",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Escena del robo en Trebisonda", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Escena del robo en Trebisonda",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        39.72,
+        41.0
+      ],
+      "nombre_antiguo": "Trapesunda"
     },
     {
       "id": "genova",
@@ -282,15 +638,39 @@
       "contexto": "Vuelven irreconocibles; según la leyenda descosen sus ropas y caen piedras preciosas. Preso en Génova, Marco dicta el libro a Rustichello de Pisa.",
       "estado": "idea",
       "fecha": null,
-      "ingredientes": ["albahaca", "piñones", "garbanzos", "especias traídas de toda la ruta"],
+      "ingredientes": [
+        "albahaca",
+        "piñones",
+        "garbanzos",
+        "especias traídas de toda la ruta"
+      ],
       "recetas": [
-        { "nombre": "Farinata y pesto genovés", "notas": "", "propuesta_por": "" },
-        { "nombre": "Plato «Il Milione»: un bocado de cada parada", "notas": "Cierre del ciclo.", "propuesta_por": "" }
+        {
+          "nombre": "Farinata y pesto genovés",
+          "notas": "",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Plato «Il Milione»: un bocado de cada parada",
+          "notas": "Cierre del ciclo.",
+          "propuesta_por": ""
+        }
       ],
       "arte": [
-        { "idea": "Lectura dramatizada: Marco dicta su libro a Rustichello", "propuesta_por": "" },
-        { "idea": "Descoser abrigos y que caigan «joyas»", "propuesta_por": "" }
-      ]
+        {
+          "idea": "Lectura dramatizada: Marco dicta su libro a Rustichello",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Descoser abrigos y que caigan «joyas»",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        8.93,
+        44.41
+      ],
+      "nombre_antiguo": "Genova"
     }
   ]
 }
