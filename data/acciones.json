@@ -1,13 +1,124 @@
 {
   "acciones": [
-    { "id": 1, "tarea": "Definir la frecuencia del evento (mensual, bimestral, por estación…)", "tipo": "decision", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 2, "tarea": "Confirmar Venecia como primera parada y elegir la fecha del primer Marcopolo", "tipo": "decision", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 3, "tarea": "Definir sede (casa rotativa, lugar fijo, alquilado)", "tipo": "logistica", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 4, "tarea": "Decidir cupo de invitados y cómo se reparten los costos", "tipo": "logistica", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 5, "tarea": "Regla de la casa: ¿recetas de época (sin tomate, papa, maíz, ají ni maní) o versiones modernas libres?", "tipo": "decision", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 6, "tarea": "Votar el menú de Venecia (entrada, principal, postre) a partir del brainstorming", "tipo": "recetas", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 7, "tarea": "Hacer una prueba de cocina del menú elegido", "tipo": "recetas", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 8, "tarea": "Elegir el número artístico de Venecia y quién lo hace", "tipo": "arte", "responsable": "", "fecha_limite": null, "estado": "pendiente" },
-    { "id": 9, "tarea": "Sumar a los organizadores como colaboradores del repo", "tipo": "logistica", "responsable": "santi", "fecha_limite": null, "estado": "pendiente" }
+    {
+      "id": 1,
+      "tarea": "Definir la frecuencia del evento (mensual, bimestral, por estación…)",
+      "tipo": "decision",
+      "responsable": "",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 2,
+      "tarea": "Primer Marcopolo: China (corte de Kublai) · jueves 12/11, 20:00 a 00:00",
+      "tipo": "decision",
+      "responsable": "",
+      "fecha_limite": "2026-11-12",
+      "estado": "hecho"
+    },
+    {
+      "id": 3,
+      "tarea": "Definir sede del 12/11",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-10-29",
+      "estado": "pendiente"
+    },
+    {
+      "id": 4,
+      "tarea": "Decidir cupo de invitados y cómo se reparten los costos",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-10-29",
+      "estado": "pendiente"
+    },
+    {
+      "id": 5,
+      "tarea": "Regla de la casa: ¿recetas de época (sin tomate, papa, maíz, ají ni maní) o versiones modernas libres?",
+      "tipo": "decision",
+      "responsable": "",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 6,
+      "tarea": "Armar el resto del menú chino alrededor del hot pot (caldos, cortes, salsas, entrada, postre, bebida)",
+      "tipo": "recetas",
+      "responsable": "",
+      "fecha_limite": "2026-11-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": 7,
+      "tarea": "Prueba de caldo y salsas del hot pot",
+      "tipo": "recetas",
+      "responsable": "",
+      "fecha_limite": "2026-11-08",
+      "estado": "pendiente"
+    },
+    {
+      "id": 8,
+      "tarea": "Elegir el número artístico de China y quién lo hace",
+      "tipo": "arte",
+      "responsable": "",
+      "fecha_limite": "2026-11-05",
+      "estado": "pendiente"
+    },
+    {
+      "id": 9,
+      "tarea": "Sumar a los organizadores como colaboradores del repo",
+      "tipo": "logistica",
+      "responsable": "santi",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 10,
+      "tarea": "Conseguir equipo de hot pot: anafes/ollas con divisor, cucharitas-colador",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-11-08",
+      "estado": "pendiente"
+    },
+    {
+      "id": 11,
+      "tarea": "Relato de apertura: el viaje de Niccolò y Maffeo y el encargo de Kublai",
+      "tipo": "arte",
+      "responsable": "",
+      "fecha_limite": "2026-11-10",
+      "estado": "pendiente"
+    },
+    {
+      "id": 12,
+      "tarea": "Rompecabezas físico: elegir material y técnica (cartón impreso, madera con corte láser, imán…) y presupuesto",
+      "tipo": "rompecabezas",
+      "responsable": "",
+      "fecha_limite": "2026-10-29",
+      "estado": "pendiente"
+    },
+    {
+      "id": 13,
+      "tarea": "Rompecabezas físico: base/tablero vacío para cada invitado (se entrega en el primer evento)",
+      "tipo": "rompecabezas",
+      "responsable": "",
+      "fecha_limite": "2026-11-10",
+      "estado": "pendiente"
+    },
+    {
+      "id": 14,
+      "tarea": "Producir las piezas de Cambaluc (pieza 8) para todos los invitados del 12/11",
+      "tipo": "rompecabezas",
+      "responsable": "",
+      "fecha_limite": "2026-11-10",
+      "estado": "pendiente"
+    },
+    {
+      "id": 15,
+      "tarea": "Definir qué pasa si alguien falta a un evento (¿recupera la pieza después? ¿se pierde?)",
+      "tipo": "rompecabezas",
+      "responsable": "",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    }
   ]
 }

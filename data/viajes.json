@@ -3,9 +3,71 @@
     "nombre": "Marcopolo",
     "frecuencia": "por definir",
     "sede": "por definir",
-    "proxima_parada": "venecia"
+    "relato": "No seguimos el viaje en orden. Marco Polo llegó a Oriente porque antes habían ido su padre, Niccolò, y su tío, Maffeo: entre 1260 y 1269 comerciaron con los mongoles, quedaron varados en Bujara por una guerra y terminaron en la corte de Kublai Kan, que nunca había visto latinos. Kublai les pidió volver con cien sabios cristianos y aceite de la lámpara del Santo Sepulcro. En ese segundo viaje se llevaron a Marco, de 17 años. Por eso arrancamos en China: donde empieza la historia.",
+    "ediciones": [
+      {
+        "n": 1,
+        "parada": "khanbaliq",
+        "fecha": "2026-11-12",
+        "hora": "20:00 a 00:00",
+        "sede": "por definir"
+      }
+    ]
   },
   "paradas": [
+    {
+      "id": "khanbaliq",
+      "orden": 8,
+      "lugar": "Shangdu y Khanbaliq",
+      "hoy": "China (Mongolia Interior / Pekín)",
+      "anio": "1275",
+      "contexto": "Llegan a la corte de Kublai Kan: el palacio de verano de Xanadu y la capital Khanbaliq, hoy Pekín.",
+      "estado": "elegida",
+      "fecha": "2026-11-12",
+      "ingredientes": [
+        "cordero",
+        "sésamo",
+        "jengibre",
+        "cebolla de verdeo",
+        "hongos",
+        "fideos",
+        "harina"
+      ],
+      "recetas": [
+        {
+          "nombre": "Jiaozi",
+          "notas": "Empanaditas hervidas.",
+          "propuesta_por": ""
+        },
+        {
+          "nombre": "Hot pot chino",
+          "notas": "Olla compartida en la mesa, con cordero cortado finito como en la leyenda de Kublai.",
+          "propuesta_por": "",
+          "elegida": true
+        },
+        {
+          "nombre": "Pato laqueado",
+          "notas": "Anacrónico, pero es Pekín.",
+          "propuesta_por": ""
+        }
+      ],
+      "arte": [
+        {
+          "idea": "Recitado de «Kubla Khan» de Coleridge",
+          "propuesta_por": ""
+        },
+        {
+          "idea": "Banquete ceremonial con el Kan",
+          "propuesta_por": ""
+        }
+      ],
+      "coords": [
+        116.4,
+        39.9
+      ],
+      "nombre_antiguo": "Cambaluc",
+      "dato": "Aquí Niccolò y Maffeo conocieron a Kublai en su primer viaje, y aquí Marco entró a su servicio. Marco destaca el papel moneda, el correo a caballo y unas «piedras negras que arden» (el carbón). Según una leyenda china, el hot pot de cordero (shuan yangrou) nació en una campaña de Kublai, cuando sus cocineros cortaron la carne finita para que se cocinara al instante."
+    },
     {
       "id": "venecia",
       "orden": 1,
@@ -13,7 +75,7 @@
       "hoy": "Italia",
       "anio": "1271 · partida",
       "contexto": "Marco sale con su padre Niccolò y su tío Maffeo. Venecia es la puerta del comercio de especias entre Oriente y Europa.",
-      "estado": "elegida",
+      "estado": "idea",
       "fecha": null,
       "ingredientes": [
         "sardinas",
@@ -59,7 +121,8 @@
         12.34,
         45.44
       ],
-      "nombre_antiguo": "Venetia"
+      "nombre_antiguo": "Venetia",
+      "dato": "El libro se conoció como Il Milione, quizás por el apodo de la familia (Emilione) o por los «millones» de maravillas que contaba."
     },
     {
       "id": "acre",
@@ -99,7 +162,8 @@
         35.07,
         32.93
       ],
-      "nombre_antiguo": "Acri"
+      "nombre_antiguo": "Acri",
+      "dato": "El legado papal Teobaldo Visconti les dio cartas para el Kan. Ya en camino supieron que lo habían elegido papa (Gregorio X) y volvieron a Acre por su bendición."
     },
     {
       "id": "tabriz",
@@ -148,7 +212,8 @@
         46.29,
         38.08
       ],
-      "nombre_antiguo": "Tauris"
+      "nombre_antiguo": "Tauris",
+      "dato": "Marco la describe como gran ciudad de comercio, adonde llegan mercaderías de India, Bagdad y Ormuz, y donde mercaderes latinos compran piedras preciosas."
     },
     {
       "id": "ormuz",
@@ -187,7 +252,8 @@
         56.46,
         27.1
       ],
-      "nombre_antiguo": "Cormos"
+      "nombre_antiguo": "Cormos",
+      "dato": "Cuenta que en verano el calor era tan fuerte que la gente pasaba el día metida en el agua."
     },
     {
       "id": "balj",
@@ -232,7 +298,8 @@
         66.9,
         36.76
       ],
-      "nombre_antiguo": "Balac"
+      "nombre_antiguo": "Balac",
+      "dato": "Marco pasó cerca de un año enfermo en las montañas de Badajshán y dice que se curó con el aire de las alturas. Allí se sacaban los rubíes «balajes»."
     },
     {
       "id": "kashgar",
@@ -281,7 +348,8 @@
         75.99,
         39.47
       ],
-      "nombre_antiguo": "Cascar"
+      "nombre_antiguo": "Cascar",
+      "dato": "En el Pamir notó que, por la altura, el fuego no calentaba igual y la comida tardaba en cocinarse."
     },
     {
       "id": "gobi",
@@ -324,56 +392,8 @@
         94.66,
         40.14
       ],
-      "nombre_antiguo": "Desertum Lop"
-    },
-    {
-      "id": "khanbaliq",
-      "orden": 8,
-      "lugar": "Shangdu y Khanbaliq",
-      "hoy": "China (Mongolia Interior / Pekín)",
-      "anio": "1275",
-      "contexto": "Llegan a la corte de Kublai Kan: el palacio de verano de Xanadu y la capital Khanbaliq, hoy Pekín.",
-      "estado": "idea",
-      "fecha": null,
-      "ingredientes": [
-        "pato",
-        "cerdo",
-        "jengibre",
-        "cebolla de verdeo",
-        "harina"
-      ],
-      "recetas": [
-        {
-          "nombre": "Jiaozi",
-          "notas": "Empanaditas hervidas.",
-          "propuesta_por": ""
-        },
-        {
-          "nombre": "Hot pot de cordero",
-          "notas": "Olla compartida en la mesa.",
-          "propuesta_por": ""
-        },
-        {
-          "nombre": "Pato laqueado",
-          "notas": "Anacrónico, pero es Pekín.",
-          "propuesta_por": ""
-        }
-      ],
-      "arte": [
-        {
-          "idea": "Recitado de «Kubla Khan» de Coleridge",
-          "propuesta_por": ""
-        },
-        {
-          "idea": "Banquete ceremonial con el Kan",
-          "propuesta_por": ""
-        }
-      ],
-      "coords": [
-        116.4,
-        39.9
-      ],
-      "nombre_antiguo": "Cambaluc"
+      "nombre_antiguo": "Desertum Lop",
+      "dato": "Cruzar el desierto de Lop llevaba un mes. Los viajeros ataban campanas a los animales para no perderse siguiendo las voces de los espíritus."
     },
     {
       "id": "hangzhou",
@@ -421,7 +441,8 @@
         120.16,
         30.27
       ],
-      "nombre_antiguo": "Quinsai"
+      "nombre_antiguo": "Quinsai",
+      "dato": "Dice que tenía 12.000 puentes de piedra y que era tan grande que había baños públicos para miles de personas por día."
     },
     {
       "id": "yunnan",
@@ -455,7 +476,8 @@
         102.71,
         25.04
       ],
-      "nombre_antiguo": "Caraian"
+      "nombre_antiguo": "Caraian",
+      "dato": "Describe «serpientes» enormes con patas (cocodrilos), el uso de conchas blancas como moneda y que la gente comía carne cruda con salsa de ajo."
     },
     {
       "id": "sumatra",
@@ -499,7 +521,8 @@
         97.2,
         5.1
       ],
-      "nombre_antiguo": "Giava Minore"
+      "nombre_antiguo": "Giava Minore",
+      "dato": "Allí vio «unicornios» (rinocerontes) y aclara que eran feos y nada parecidos a los que imaginaban en Europa."
     },
     {
       "id": "ceilan",
@@ -539,7 +562,8 @@
         79.86,
         6.93
       ],
-      "nombre_antiguo": "Seilan"
+      "nombre_antiguo": "Seilan",
+      "dato": "Asegura que el rey tenía el rubí más grande del mundo, de un palmo de largo, y que Kublai quiso comprárselo a cambio de una ciudad."
     },
     {
       "id": "malabar",
@@ -588,7 +612,8 @@
         76.6,
         8.9
       ],
-      "nombre_antiguo": "Melibar"
+      "nombre_antiguo": "Melibar",
+      "dato": "Habla de la pimienta de Coilum (Kollam) y de los pescadores de perlas que se sumergían en el golfo de Mannar."
     },
     {
       "id": "trebisonda",
@@ -627,7 +652,8 @@
         39.72,
         41.0
       ],
-      "nombre_antiguo": "Trapesunda"
+      "nombre_antiguo": "Trapesunda",
+      "dato": "En Trebisonda les robaron buena parte de lo que traían de Oriente. Ya en Persia se habían enterado de la muerte de Kublai."
     },
     {
       "id": "genova",
@@ -670,7 +696,82 @@
         8.93,
         44.41
       ],
-      "nombre_antiguo": "Genova"
+      "nombre_antiguo": "Genova",
+      "dato": "Preso por los genoveses, compartió celda con Rustichello de Pisa, autor de novelas de caballería, que puso por escrito sus relatos."
+    }
+  ],
+  "escalas": [
+    {
+      "id": "constantinopla",
+      "antiguo": "Costantinopoli",
+      "lugar": "Constantinopla (Estambul)",
+      "viaje": "padre",
+      "anio": "1253–1260",
+      "coords": [
+        28.97,
+        41.01
+      ],
+      "dato": "Niccolò y Maffeo tenían negocios allí. En 1260 parten hacia el mar Negro con joyas para comerciar. Marco pasa también a la vuelta, en 1295."
+    },
+    {
+      "id": "soldaia",
+      "antiguo": "Soldaia",
+      "lugar": "Sudak (Crimea)",
+      "viaje": "padre",
+      "anio": "1260",
+      "coords": [
+        34.95,
+        44.84
+      ],
+      "dato": "Puerto del mar Negro donde la familia Polo tenía casa. Desde allí se internan en las tierras de la Horda de Oro."
+    },
+    {
+      "id": "sarai",
+      "antiguo": "Sara",
+      "lugar": "Sarai (Rusia, río Volga)",
+      "viaje": "padre",
+      "anio": "1260–1261",
+      "coords": [
+        47.0,
+        46.6
+      ],
+      "dato": "Corte de Berke, kan de la Horda de Oro. Le regalan sus joyas y él les paga el doble. Una guerra entre Berke y Hulagu les cierra el camino de regreso."
+    },
+    {
+      "id": "bujara",
+      "antiguo": "Bocara",
+      "lugar": "Bujará (Uzbekistán)",
+      "viaje": "padre",
+      "anio": "1262–1264",
+      "coords": [
+        64.42,
+        39.77
+      ],
+      "dato": "Quedan varados tres años. Unos enviados de Hulagu que iban a ver a Kublai los invitan a sumarse: el Gran Kan nunca había visto latinos."
+    },
+    {
+      "id": "ayas",
+      "antiguo": "Laias",
+      "lugar": "Ayas (Turquía)",
+      "viaje": "ambos",
+      "anio": "1269 · 1271",
+      "coords": [
+        35.8,
+        36.8
+      ],
+      "dato": "Puerto de la Armenia cilicia. Por aquí vuelven Niccolò y Maffeo en 1269 y desde aquí sale Marco tierra adentro en 1271."
+    },
+    {
+      "id": "zaiton",
+      "antiguo": "Zaiton",
+      "lugar": "Quanzhou (China)",
+      "viaje": "marco",
+      "anio": "1291",
+      "coords": [
+        118.59,
+        24.91
+      ],
+      "dato": "Uno de los mayores puertos del mundo. De aquí zarpan 14 barcos que llevan a la princesa Kököchin, prometida del kan de Persia, con los Polo como escolta."
     }
   ]
 }

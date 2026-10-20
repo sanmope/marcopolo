@@ -81,6 +81,19 @@
   .mapa svg { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 2px 14px rgba(60,40,20,.25); }
   .mapa figcaption { color: var(--muted); font-size: .82rem; margin-top: 6px; }
   .mapa-scroll { overflow-x: auto; }
+  .relato { max-width: 760px; font-size: 1.05rem; }
+  .map-tools { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; margin: 14px 0 10px; font-size: .88rem; }
+  .map-tools .filters { margin: 0; }
+  .map-tools label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .sw { display: inline-block; width: 26px; height: 0; border-top: 3px solid; }
+  .sw.padre { border-color: #2e6b3a; border-top-style: dashed; }
+  .sw.marco { border-color: #9c2414; }
+  .info { margin-bottom: 28px; }
+  .info .antiguo { font-family: "IM Fell English SC", Georgia, serif; font-size: 1.9rem; color: var(--accent); line-height: 1.1; }
+  .info .dato { border-left: 3px solid var(--gold); padding-left: 12px; font-style: italic; }
+  .info button { font: inherit; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; text-decoration: underline; }
+  .pieza-tag { display: inline-block; margin-top: 6px; font-size: .8rem; padding: 2px 10px; border-radius: 999px; background: var(--chip); }
+  .sub-h { margin: 8px 0 14px; }
   @media (max-width: 640px) { .mapa svg { width: 760px; } }
 </style>
 </head>
@@ -92,7 +105,7 @@
     <p class="lede">Un evento recurrente que sigue el viaje de Marco Polo (1271–1295): en cada edición cocinamos recetas inspiradas en un lugar que visitó y armamos un número artístico de ese lugar.</p>
     <nav>
       <a href="#cuando">Cuándo y qué</a>
-      <a href="#ruta">La ruta · brainstorming</a>
+      <a href="#ruta">Rompecabezas y ruta</a>
       <a href="#acciones">Acciones</a>
       <a href="#colaborar">Cómo sumar ideas</a>
     </nav>
@@ -106,12 +119,24 @@
   </section>
 
   <section id="ruta">
-    <h2>La ruta · brainstorming</h2>
-    <p class="meta">Cada parada es un posible Marcopolo. Abrí una para ver ideas de recetas, ingredientes y números artísticos.</p>
+    <h2>El rompecabezas de la ruta</h2>
+    <p class="relato" id="relato"></p>
+    <p class="meta">El mapa es un rompecabezas: cada parada es una pieza. En cada Marcopolo los invitados reciben la pieza de ese lugar y, evento a evento, lo van completando. No seguimos el orden del viaje: los números son el orden en que lo hizo Marco, no el de los eventos.</p>
+    <div class="map-tools">
+      <div class="filters" id="modo">
+        <button class="on" data-m="rompecabezas">🧩 Rompecabezas</button>
+        <button data-m="completo">🗺️ Mapa completo</button>
+      </div>
+      <label><input type="checkbox" id="ver-padre" checked> <span class="sw padre"></span> Niccolò y Maffeo (1260–69)</label>
+      <label><input type="checkbox" id="ver-marco" checked> <span class="sw marco"></span> Marco (1271–95)</label>
+      <span class="meta" id="progreso"></span>
+    </div>
     <figure class="mapa">
-      <div class="mapa-scroll"><svg id="mapa" role="img" aria-label="Mapa de la ruta de Marco Polo"></svg></div>
-      <figcaption>Tocá una parada del mapa para ver sus ideas. Nombres como los escribió Marco Polo en <em>Il Milione</em>.</figcaption>
+      <div class="mapa-scroll"><svg id="mapa" role="img" aria-label="Mapa-rompecabezas de la ruta de los Polo"></svg></div>
+      <figcaption>Tocá una pieza, una parada o un rombo (escalas del camino) para ver su historia. Nombres como aparecen en <em>Il Milione</em>.</figcaption>
     </figure>
+    <div class="card info" id="info"></div>
+    <h3 class="sub-h">Paradas · brainstorming</h3>
     <ol class="route" id="paradas"></ol>
   </section>
 
@@ -148,34 +173,41 @@ document.getElementById("lnk-issue").href = `https://github.com/${REPO}/issues/n
 document.getElementById("repo-link").innerHTML = `Repo: <a href="https://github.com/${REPO}">github.com/${REPO}</a>`;
 
 Promise.all([fetch("data/viajes.json").then(r => r.json()), fetch("data/acciones.json").then(r => r.json())])
-  .then(([v, a]) => { renderResumen(v); renderParadas(v); renderAcciones(a.acciones); dibujarMapa(document.getElementById("mapa"), v.paradas, abrirParada); })
+  .then(([v, a]) => { renderResumen(v); renderParadas(v); renderAcciones(a.acciones); iniciarMapa(v); })
   .catch(e => { document.getElementById("resumen").innerHTML = `<p class="err">No se pudieron cargar los datos (${esc(e.message)}). Si abrís el archivo localmente, usá <code>python3 -m http.server</code>.</p>`; });
 
+const proximaEdicion = v => (v.evento.ediciones || []).find(e => (v.paradas.find(p => p.id === e.parada) || {}).estado !== "hecha");
+
 function renderResumen(v) {
-  const p = v.paradas.find(x => x.id === v.evento.proxima_parada);
+  const ed = proximaEdicion(v);
+  const p = ed && v.paradas.find(x => x.id === ed.parada);
   const menu = p ? p.recetas.filter(r => r.elegida) : [];
   const arte = p ? p.arte.filter(r => r.elegida) : [];
   document.getElementById("resumen").innerHTML = `
-    <div class="card"><div class="label">Próxima parada</div><div class="big">${p ? esc(p.lugar) : tbd()}</div><div class="meta">${p ? esc(p.hoy) + " · " + esc(p.anio) : ""}</div></div>
-    <div class="card"><div class="label">Cuándo</div><div class="big">${p && p.fecha ? esc(fmt(p.fecha)) : tbd()}</div><div class="meta">Frecuencia: ${v.evento.frecuencia === "por definir" ? tbd() : esc(v.evento.frecuencia)}</div></div>
-    <div class="card"><div class="label">Dónde</div><div class="big">${v.evento.sede === "por definir" ? tbd() : esc(v.evento.sede)}</div></div>
-    <div class="card"><div class="label">Qué comemos</div>${menu.length ? "<ul>" + menu.map(r => `<li>${esc(r.nombre)}</li>`).join("") + "</ul>" : `<div class="big">${tbd("en brainstorming")}</div>`}</div>
+    <div class="card"><div class="label">Próximo Marcopolo${ed ? " · #" + ed.n : ""}</div><div class="big">${p ? esc(p.lugar) : tbd()}</div><div class="meta">${p ? esc(p.nombre_antiguo) + " · " + esc(p.hoy) : ""}</div></div>
+    <div class="card"><div class="label">Cuándo</div><div class="big">${ed && ed.fecha ? esc(fmt(ed.fecha)) : tbd()}</div><div class="meta">${ed && ed.hora ? esc(ed.hora) + " · " : ""}Frecuencia: ${v.evento.frecuencia === "por definir" ? tbd() : esc(v.evento.frecuencia)}</div></div>
+    <div class="card"><div class="label">Dónde</div><div class="big">${!ed || ed.sede === "por definir" ? tbd() : esc(ed.sede)}</div></div>
+    <div class="card"><div class="label">Qué comemos</div>${menu.length ? `<div class="big">${menu.map(r => esc(r.nombre)).join("<br>")}</div><div class="meta">y lo que se sume alrededor</div>` : `<div class="big">${tbd("en brainstorming")}</div>`}</div>
     <div class="card"><div class="label">Número artístico</div>${arte.length ? "<ul>" + arte.map(r => `<li>${esc(r.idea)}</li>`).join("") + "</ul>" : `<div class="big">${tbd("en brainstorming")}</div>`}</div>`;
 }
 
 function renderParadas(v) {
   const by = x => x.propuesta_por ? ` <span class="by">— ${esc(x.propuesta_por)}</span>` : "";
   const star = x => x.elegida ? " ⭐" : "";
-  document.getElementById("paradas").innerHTML = v.paradas.sort((a, b) => a.orden - b.orden).map(p => `
-    <li class="stop ${p.id === v.evento.proxima_parada ? "next" : ""}" id="p-${p.id}">
+  const ed = proximaEdicion(v);
+  const rango = p => (p.estado === "hecha" ? 1 : p.estado === "elegida" ? 0 : 2);
+  const lista = [...v.paradas].sort((a, b) => rango(a) - rango(b) || a.orden - b.orden);
+  document.getElementById("paradas").innerHTML = lista.map(p => `
+    <li class="stop ${ed && p.id === ed.parada ? "next" : ""}" id="p-${p.id}">
       <span class="dot">${p.orden}</span>
-      <details class="card" ${p.id === v.evento.proxima_parada ? "open" : ""}>
+      <details class="card" ${ed && p.id === ed.parada ? "open" : ""}>
         <summary>
-          <span><h3 style="display:inline">${esc(p.lugar)}</h3> <span class="meta">· ${esc(p.hoy)} · ${esc(p.anio)}</span></span>
+          <span><h3 style="display:inline">${esc(p.lugar)}</h3> <span class="meta">· ${esc(p.nombre_antiguo)} · ${esc(p.hoy)} · ${esc(p.anio)}</span></span>
           <span class="estado ${esc(p.estado)}">${esc(p.estado)}${p.fecha ? " · " + esc(p.fecha) : ""}</span>
         </summary>
         <div class="body">
           <p>${esc(p.contexto)}</p>
+          ${p.dato ? `<p class="meta"><em>${esc(p.dato)}</em></p>` : ""}
           <div class="label">Ingredientes</div>
           <div class="chips">${p.ingredientes.map(i => `<span class="chip">${esc(i)}</span>`).join("")}</div>
           <div class="label">Ideas de recetas</div>
@@ -187,6 +219,42 @@ function renderParadas(v) {
         </div>
       </details>
     </li>`).join("");
+}
+
+async function iniciarMapa(v) {
+  document.getElementById("relato").textContent = v.evento.relato || "";
+  const total = v.paradas.length, hechas = v.paradas.filter(p => p.estado === "hecha").length;
+  const ed = proximaEdicion(v);
+  const pEd = ed && v.paradas.find(p => p.id === ed.parada);
+  document.getElementById("progreso").textContent = `Piezas entregadas: ${hechas} de ${total}` + (pEd ? ` · próxima: ${pEd.nombre_antiguo} (${ed.fecha.slice(8, 10)}/${ed.fecha.slice(5, 7)})` : "");
+  const mapa = await dibujarMapa(document.getElementById("mapa"), v, { alElegir: mostrarInfo });
+  if (new URLSearchParams(location.search).get("mapa") === "completo") {
+    mapa.modo("completo");
+    document.querySelectorAll("#modo button").forEach(b => b.classList.toggle("on", b.dataset.m === "completo"));
+  }
+  document.getElementById("modo").addEventListener("click", e => {
+    const m = e.target.dataset.m; if (!m) return;
+    mapa.modo(m);
+    document.querySelectorAll("#modo button").forEach(b => b.classList.toggle("on", b.dataset.m === m));
+  });
+  document.getElementById("ver-padre").addEventListener("change", e => mapa.rutasVisibles("padre", e.target.checked));
+  document.getElementById("ver-marco").addEventListener("change", e => mapa.rutasVisibles("marco", e.target.checked));
+  mostrarInfo(pEd || v.paradas[0], { estado: "proxima", edicion: ed });
+}
+
+function mostrarInfo(l, pieza) {
+  const esParada = !!l.orden;
+  const textoPieza = !pieza ? "" : pieza.estado === "entregada" ? "🧩 Pieza entregada"
+    : pieza.edicion ? `🧩 Pieza ${l.orden} · se entrega el ${fmt(pieza.edicion.fecha)}` : `🧩 Pieza ${l.orden} · todavía sin evento`;
+  const viaje = { padre: "Viaje de Niccolò y Maffeo", marco: "Viaje de Marco", ambos: "Viaje de Niccolò y Maffeo y de Marco" }[l.viaje];
+  document.getElementById("info").innerHTML = `
+    <div class="label">${esParada ? "Parada " + l.orden : "Escala · " + esc(viaje)}</div>
+    <div class="antiguo">${esc(esParada ? l.nombre_antiguo : l.antiguo)}</div>
+    <div class="meta">${esc(esParada ? l.lugar + " · hoy " + l.hoy : l.lugar)} · ${esc(l.anio)}</div>
+    ${textoPieza ? `<span class="pieza-tag">${esc(textoPieza)}</span>` : ""}
+    ${l.contexto ? `<p>${esc(l.contexto)}</p>` : ""}
+    ${l.dato ? `<p class="dato">${esc(l.dato)}</p>` : ""}
+    ${esParada ? `<p class="meta">Ingredientes: ${l.ingredientes.map(esc).join(", ")}</p><button onclick="abrirParada({id:'${l.id}'})">Ver recetas e ideas →</button>` : ""}`;
 }
 
 function abrirParada(p) {
