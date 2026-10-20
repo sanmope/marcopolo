@@ -147,11 +147,12 @@
 
   <section id="mesas">
     <h2>Logística · mesas para el hot pot</h2>
-    <p class="meta">Croquis a escala del espacio de 4 × 8 m, todo para la mesa (la cocina y la reposición quedan afuera). La regla del hot pot: nadie debería estar a más de ~60 cm de su olla, así que conviene una mesa angosta (90 cm) con las ollas en fila por el centro.</p>
+    <p class="meta">Croquis a escala del espacio de 4 × 8 m, todo para la mesa (la cocina y la reposición quedan afuera). La regla del hot pot: nadie debería estar a más de ~60 cm de su olla, así que conviene una mesa angosta (90 cm) con las ollas en fila por el centro, o mesas redondas chicas con una olla cada una.</p>
     <div class="filters" id="variante">
       <button class="on" data-v="20">20 personas · 5 ollas (recomendado)</button>
       <button data-v="24">24 personas · 6 ollas (máximo)</button>
       <button data-v="18">18 personas · 3 ollas</button>
+      <button data-v="r18">18 personas · 3 mesas redondas</button>
     </div>
     <div class="croquis-wrap"><svg id="croquis" role="img" aria-label="Croquis de mesas"></svg></div>
     <div class="grid2" id="croquis-notas"></div>
@@ -318,6 +319,8 @@ const CROQUIS = {
           nota: "Cada olla para 4 (dos de cada lado, enfrentados). Queda 1 m libre en cada punta: se puede pasar de un pasillo al otro sin molestar a nadie." },
     24: { largo: 720, porLado: 12, porOlla: 4, armado: "3 tablones de 2,4 × 0,9 m, o 4 mesas de 1,8 × 0,9 m",
           nota: "El máximo. Cada olla para 4, pero en las puntas quedan solo 40 cm: no se puede rodear la mesa, cada uno entra por su lado. Si el espacio mide algo más de 8 m, mejora." },
+    r18: { redonda: true, mesas: 3, porMesa: 6, diametro: 120, armado: "3 mesas redondas de Ø 1,2 m",
+           nota: "Cada mesa con su olla en el centro: los 6 quedan a la misma distancia (60 cm), es lo más parecido a un restaurante chino y la charla es más de grupo. Las sillas van giradas para que entre mesas queden ~60 cm libres para pasar. Se pierden 2 lugares contra la mesa larga y no hay pasillo libre en las puntas." },
     18: { largo: 600, porLado: 9, porOlla: 6, armado: "3 tablones de 2 × 0,9 m, o 4 mesas de 1,5 × 0,9 m",
           nota: "Cada olla para 6 (tres de cada lado). Menos anafes y menos consumo, pero los de las puntas de cada grupo quedan a ~75 cm de la olla." },
   },
@@ -339,35 +342,57 @@ function dibujarCroquis(v) {
   o.push(`<defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-flecha"/></marker>
     <pattern id="paso" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" class="c-rayado"/></pattern></defs>`);
   r(0, 0, W, H, "c-sala");
-  r(0, 0, W, m.y - silla - 10, "c-pasillo"); r(0, m.y + m.a + silla + 10, W, H - (m.y + m.a + silla + 10), "c-pasillo");
-  t(W / 2, (m.y - silla - 10) / 2 + 5, "pasillo ≈ 1 m", "c-tenue"); t(W / 2, (H + m.y + m.a + silla + 10) / 2 + 5, "pasillo ≈ 1 m", "c-tenue");
+  const borde = conf.redonda ? H / 2 - 108 : m.y - silla - 10;
+  r(0, 0, W, borde, "c-pasillo"); r(0, H - borde, W, borde, "c-pasillo");
+  t(W / 2, borde / 2 + 5, `pasillo ≈ ${coma(Math.round(borde / 10) / 10)} m`, "c-tenue"); t(W / 2, H - borde / 2 + 5, `pasillo ≈ ${coma(Math.round(borde / 10) / 10)} m`, "c-tenue");
   t(-14, H / 2, "→ cocina y reposición afuera", "c-tenue", "end");
-  r(m.x, m.y, m.l, m.a, "c-mesa", 'rx="4"');
-  for (let i = 0; i < conf.porLado; i++) {
-    const cx = m.x + paso * (i + 0.5);
-    r(cx - silla / 2, m.y - silla - 4, silla, silla, "c-silla", 'rx="6"');
-    r(cx - silla / 2, m.y + m.a + 4, silla, silla, "c-silla", 'rx="6"');
+  let nOllas, porPersona;
+  if (conf.redonda) {
+    // mesas redondas en fila, una olla al centro de cada una; sillas giradas para no chocar entre mesas
+    const R = conf.diametro / 2, cy = H / 2, xs = [...Array(conf.mesas)].map((_, i) => (W / conf.mesas) * (i + 0.5));
+    xs.forEach((cx, i) => {
+      for (let j = 0; j < conf.porMesa; j++) {
+        const ang = (360 / conf.porMesa) * j + 180 / conf.porMesa, rad = (ang * Math.PI) / 180; // ninguna silla apunta a la mesa vecina
+        const sx = cx + Math.cos(rad) * (R + 26), sy = cy + Math.sin(rad) * (R + 26);
+        r(sx - silla / 2, sy - silla / 2, silla, silla, "c-silla", `rx="6" transform="rotate(${ang + 90} ${sx} ${sy})"`);
+      }
+      o.push(`<circle cx="${cx}" cy="${cy}" r="${R}" class="c-mesa"/>`);
+      o.push(`<circle cx="${cx}" cy="${cy}" r="17" class="c-olla"/><path d="M${cx},${cy - 17} q9,8.5 0,17 t0,17" class="c-yy"/>`);
+      t(cx, cy + 40, `Ø ${coma(conf.diametro / 100)} m`, "c-cotatxt");
+      if (i > 0) cota(xs[i - 1] + R, cy, cx - R, cy, `${Math.round(cx - R - xs[i - 1] - R)}`, 0, -6);
+    });
+    cota(0, cy, xs[0] - R, cy, `${Math.round(xs[0] - R)}`, 0, -6);
+    nOllas = conf.mesas; porPersona = Math.round(Math.PI * conf.diametro / conf.porMesa);
+  } else {
+    r(m.x, m.y, m.l, m.a, "c-mesa", 'rx="4"');
+    for (let i = 0; i < conf.porLado; i++) {
+      const cx = m.x + paso * (i + 0.5);
+      r(cx - silla / 2, m.y - silla - 4, silla, silla, "c-silla", 'rx="6"');
+      r(cx - silla / 2, m.y + m.a + 4, silla, silla, "c-silla", 'rx="6"');
+    }
+    nOllas = (conf.porLado * 2) / conf.porOlla; const grupo = conf.porOlla / 2; porPersona = Math.round(paso);
+    for (let k = 0; k < nOllas; k++) {
+      const cx = m.x + paso * grupo * (k + 0.5), cy = m.y + m.a / 2;
+      if (k > 0) o.push(`<line x1="${m.x + paso * grupo * k}" y1="${m.y + 8}" x2="${m.x + paso * grupo * k}" y2="${m.y + m.a - 8}" class="c-div"/>`);
+      o.push(`<circle cx="${cx}" cy="${cy}" r="17" class="c-olla"/><path d="M${cx},${cy - 17} q9,8.5 0,17 t0,17" class="c-yy"/>`);
+    }
+    cota(0, H + 28, W, H + 28, "8 m", 0, 18);
+    cota(W + 28, 0, W + 28, H, "4 m", 22, 4);
+    cota(m.x, m.y + m.a + silla + 22, m.x + m.l, m.y + m.a + silla + 22, `mesa ${coma(m.l / 100)} × ${coma(m.a / 100)} m`, 0, 18);
+    cota(m.x + m.l + 8, m.y, m.x + m.l + 8, m.y + m.a, "90", 16, 4);
+    cota(m.x, m.y - silla - 26, m.x + paso, m.y - silla - 26, `${Math.round(paso)} cm`, 0, -6);
+    cota(0, m.y + m.a / 2, m.x, m.y + m.a / 2, `${m.x}`, 0, -6);
+    cota(m.x + m.l, m.y + m.a / 2 + 26, W, m.y + m.a / 2 + 26, `${W - m.x - m.l}`, 0, -6);
   }
-  const nOllas = (conf.porLado * 2) / conf.porOlla, grupo = conf.porOlla / 2;
-  for (let k = 0; k < nOllas; k++) {
-    const cx = m.x + paso * grupo * (k + 0.5), cy = m.y + m.a / 2;
-    if (k > 0) o.push(`<line x1="${m.x + paso * grupo * k}" y1="${m.y + 8}" x2="${m.x + paso * grupo * k}" y2="${m.y + m.a - 8}" class="c-div"/>`);
-    o.push(`<circle cx="${cx}" cy="${cy}" r="17" class="c-olla"/><path d="M${cx},${cy - 17} q9,8.5 0,17 t0,17" class="c-yy"/>`);
-  }
-  cota(0, H + 28, W, H + 28, "8 m", 0, 18);
-  cota(W + 28, 0, W + 28, H, "4 m", 22, 4);
-  cota(m.x, m.y + m.a + silla + 22, m.x + m.l, m.y + m.a + silla + 22, `mesa ${coma(m.l / 100)} × ${coma(m.a / 100)} m`, 0, 18);
-  cota(m.x + m.l + 8, m.y, m.x + m.l + 8, m.y + m.a, "90", 16, 4);
-  cota(m.x, m.y - silla - 26, m.x + paso, m.y - silla - 26, `${Math.round(paso)} cm`, 0, -6);
-  cota(0, m.y + m.a / 2, m.x, m.y + m.a / 2, `${m.x}`, 0, -6);
-  cota(m.x + m.l, m.y + m.a / 2 + 26, W, m.y + m.a / 2 + 26, `${W - m.x - m.l}`, 0, -6);
+  if (conf.redonda) { cota(0, H + 28, W, H + 28, "8 m", 0, 18); cota(W + 28, 0, W + 28, H, "4 m", 22, 4); }
   document.getElementById("croquis").setAttribute("viewBox", `-240 -20 ${W + 330} ${H + 80}`);
   document.getElementById("croquis").innerHTML = o.join("");
-  const total = conf.porLado * 2;
+  const total = conf.redonda ? conf.mesas * conf.porMesa : conf.porLado * 2;
+  const porOlla = conf.redonda ? conf.porMesa : conf.porOlla;
   document.getElementById("croquis-notas").innerHTML = `
-    <div class="card"><div class="label">Capacidad</div><div class="big">${total} personas</div><div class="meta">${nOllas} ollas · ${conf.porOlla} por olla · ${Math.round(paso)} cm por persona</div><p>${conf.nota}</p></div>
+    <div class="card"><div class="label">Capacidad</div><div class="big">${total} personas</div><div class="meta">${nOllas} ollas · ${porOlla} por olla · ${porPersona} cm por persona</div><p>${conf.nota}</p></div>
     <div class="card"><div class="label">Qué hace falta</div><ul>
-      <li>Una mesa larga de ${coma(m.l / 100)} × 0,9 m: ${conf.armado}.</li>
+      <li>${conf.redonda ? conf.armado : `Una mesa larga de ${coma(m.l / 100)} × 0,9 m: ${conf.armado}`}.</li>
       <li>${total} sillas sin apoyabrazos (entran más juntas).</li>
       <li>${nOllas} ollas (mejor con divisor yin-yang, Ø 28–30 cm) y ${nOllas} anafes.</li>
       <li>Por cada olla: colador-cucharón, palillos, bowls, platitos para salsas.</li>
