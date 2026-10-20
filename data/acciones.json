@@ -26,7 +26,7 @@
     },
     {
       "id": 4,
-      "tarea": "Decidir cupo de invitados (máx. ~20 en el espacio de 4×8 con una mesa larga) y cómo se reparten los costos",
+      "tarea": "Decidir cupo de invitados (20 cómodos, 24 máximo en el espacio de 4×8) y cómo se reparten los costos",
       "tipo": "logistica",
       "responsable": "",
       "fecha_limite": "2026-10-29",
@@ -178,7 +178,7 @@
     },
     {
       "id": 23,
-      "tarea": "Medir exacto el espacio y marcar puerta, ventanas y enchufes para ajustar el croquis",
+      "tarea": "Medir exacto el espacio y marcar puerta y enchufes para ajustar el croquis; definir dónde va la reposición afuera",
       "tipo": "logistica",
       "responsable": "santi",
       "fecha_limite": "2026-10-29",
