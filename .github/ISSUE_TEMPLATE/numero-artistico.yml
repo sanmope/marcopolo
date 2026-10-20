@@ -1,0 +1,24 @@
+name: 🎭 Propuesta de número artístico
+description: Proponer un número artístico para una parada
+labels: ["arte"]
+body:
+  - type: input
+    id: parada
+    attributes:
+      label: Parada
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Idea
+    validations:
+      required: true
+  - type: textarea
+    id: necesidades
+    attributes:
+      label: Qué se necesita (gente, materiales, espacio, duración)
+  - type: input
+    id: quien
+    attributes:
+      label: ¿Quién lo hace?

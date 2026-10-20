@@ -1,0 +1,35 @@
+name: 🍲 Propuesta de receta
+description: Proponer un plato para una parada de la ruta
+labels: ["receta"]
+body:
+  - type: input
+    id: parada
+    attributes:
+      label: Parada
+      description: "Ej: Venecia, Tabriz, Quinsay…"
+    validations:
+      required: true
+  - type: input
+    id: plato
+    attributes:
+      label: Plato
+    validations:
+      required: true
+  - type: dropdown
+    id: momento
+    attributes:
+      label: Momento del menú
+      options: [Entrada, Principal, Postre, Bebida, Otro]
+  - type: textarea
+    id: inspiracion
+    attributes:
+      label: ¿Qué tiene que ver con el viaje?
+      description: Relación con lo que Marco Polo vio o contó en ese lugar.
+  - type: textarea
+    id: receta
+    attributes:
+      label: Ingredientes / receta / link
+  - type: input
+    id: cocina
+    attributes:
+      label: ¿Quién se anima a cocinarlo?

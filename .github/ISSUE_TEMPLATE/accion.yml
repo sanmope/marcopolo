@@ -1,0 +1,18 @@
+name: ✅ Acción / logística
+description: Una tarea o decisión pendiente
+labels: ["accion"]
+body:
+  - type: textarea
+    id: tarea
+    attributes:
+      label: Qué hay que hacer o decidir
+    validations:
+      required: true
+  - type: input
+    id: responsable
+    attributes:
+      label: Responsable
+  - type: input
+    id: fecha
+    attributes:
+      label: Fecha límite
