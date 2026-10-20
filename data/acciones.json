@@ -119,6 +119,38 @@
       "responsable": "",
       "fecha_limite": null,
       "estado": "pendiente"
+    },
+    {
+      "id": 16,
+      "tarea": "Averiguar si Lisandro se copa para hablar de historia",
+      "tipo": "arte",
+      "responsable": "santi",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 17,
+      "tarea": "Hablar con Francisca Matoni",
+      "tipo": "arte",
+      "responsable": "kolo",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 18,
+      "tarea": "Hablar con Vane para ver si tiene a alguien",
+      "tipo": "arte",
+      "responsable": "kolo",
+      "fecha_limite": null,
+      "estado": "pendiente"
+    },
+    {
+      "id": 19,
+      "tarea": "Ir a tiendas chinas a ver disfraces y cosas para ambientar",
+      "tipo": "ambientacion",
+      "responsable": "santi y kolo",
+      "fecha_limite": null,
+      "estado": "pendiente"
     }
   ]
 }
