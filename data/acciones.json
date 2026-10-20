@@ -58,7 +58,7 @@
     },
     {
       "id": 8,
-      "tarea": "Elegir el número artístico de China y quién lo hace",
+      "tarea": "Elegir el número artístico de China (opciones: música china, charla sobre el Tao, charla de historia, sombras chinas) y quién lo hace",
       "tipo": "arte",
       "responsable": "",
       "fecha_limite": "2026-11-05",
