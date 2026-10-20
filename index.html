@@ -169,6 +169,7 @@
       </div>
       <span class="meta">Los ✓ quedan guardados solo en tu navegador.</span>
     </div>
+    <div class="grid2" id="compras-costos" style="margin-bottom:20px"></div>
     <div id="compras-lista" class="compras"></div>
   </section>
 
@@ -417,6 +418,21 @@ function iniciarCompras(c) {
   const draw = () => {
     const n = Math.max(1, +document.getElementById("compras-n").value || c.base_personas);
     const k = n / c.base_personas, hechos = leer();
+    const cant = it => (it.cantidad == null ? 0 : it.fijo ? it.cantidad : it.cantidad * k);
+    const costo = it => (it.precio ? cant(it) * it.precio : 0);
+    const plata = x => "$ " + (Math.round(x / 100) * 100).toLocaleString("es-AR");
+    const excl = c.comida_excluye || [];
+    const comida = c.items.filter(it => !excl.includes(it.plato)).reduce((s, it) => s + costo(it), 0);
+    const bebidas = c.items.filter(it => it.plato === "Bebidas").reduce((s, it) => s + costo(it), 0);
+    const porPlato = {};
+    c.items.filter(it => !excl.includes(it.plato)).forEach(it => (porPlato[it.plato] = (porPlato[it.plato] || 0) + costo(it)));
+    document.getElementById("compras-costos").innerHTML = `
+      <div class="card"><div class="label">Comida · por persona</div><div class="big">${plata(comida / n)}</div>
+        <div class="meta">Total ${plata(comida)} para ${n}. Con 10% de imprevistos: ${plata(comida * 1.1 / n)} por persona.</div></div>
+      <div class="card"><div class="label">En qué se va</div>${Object.entries(porPlato).sort((a, b) => b[1] - a[1]).map(([p, v]) =>
+        `<div style="display:flex;justify-content:space-between;gap:8px"><span>${esc(p)}</span><span class="meta">${plata(v / n)} · ${Math.round(v / comida * 100)}%</span></div>`).join("")}</div>
+      <div class="card"><div class="label">Aparte · bebidas</div><div class="big">${plata(bebidas / n)}</div><div class="meta">por persona (té, cerveza, agua y una botella para el brindis)</div>
+        <p class="meta">${esc(c.precios_nota || "")}</p></div>`;
     const grupos = {};
     c.items.forEach((it, i) => (grupos[it[grupo] || "Sin definir"] ||= []).push([it, i]));
     document.getElementById("compras-lista").innerHTML = Object.entries(grupos).map(([g, its]) => `
@@ -424,7 +440,7 @@ function iniciarCompras(c) {
         <label><input type="checkbox" data-i="${i}" ${hechos[i] ? "checked" : ""}>
           <span>${esc(it.item)}</span>
           <span class="cant">${it.cantidad == null ? tbd() : redondear(it.fijo ? it.cantidad : it.cantidad * k, it.unidad) + " " + esc(it.unidad)}</span>
-          <span class="n">${esc(grupo === "plato" ? it.donde : it.plato)}${it.nota ? " · " + esc(it.nota) : ""}</span>
+          <span class="n">${esc(grupo === "plato" ? it.donde : it.plato)}${it.nota ? " · " + esc(it.nota) : ""}${it.precio ? ` · ~${plata(costo(it))}` : ""}</span>
         </label>`).join("")}</div>`).join("");
   };
   document.getElementById("compras-n").addEventListener("input", draw);
