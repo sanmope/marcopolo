@@ -1,0 +1,59 @@
+{
+  "evento": "Marcopolo #1 · China · 12/11",
+  "base_personas": 20,
+  "notas": "Cantidades estimadas para 20 personas con el hot pot como plato principal (~250 g de proteína y ~250 g de verdura por persona, más 3 entradas). Ajustar después de la prueba de cocina.",
+  "items": [
+    { "plato": "Entradas", "item": "Tapas de wantán", "cantidad": 60, "unidad": "unid.", "donde": "Tienda china", "nota": "3 por persona" },
+    { "plato": "Entradas", "item": "Tapas para dumplings / gyoza", "cantidad": 80, "unidad": "unid.", "donde": "Tienda china", "nota": "4 por persona" },
+    { "plato": "Entradas", "item": "Hojas para arrolladitos primavera", "cantidad": 30, "unidad": "unid.", "donde": "Tienda china", "nota": "1 y medio por persona" },
+    { "plato": "Entradas", "item": "Cerdo picado", "cantidad": 1.7, "unidad": "kg", "donde": "Carnicería", "nota": "relleno de wantán y dumplings" },
+    { "plato": "Entradas", "item": "Langostinos pelados", "cantidad": 0.3, "unidad": "kg", "donde": "Pescadería", "nota": "opcional, para el wantán" },
+    { "plato": "Entradas", "item": "Repollo (o akusay)", "cantidad": 1, "unidad": "unid.", "donde": "Verdulería", "nota": "dumplings y arrolladitos" },
+    { "plato": "Entradas", "item": "Zanahoria", "cantidad": 0.5, "unidad": "kg", "donde": "Verdulería", "nota": "arrolladitos" },
+    { "plato": "Entradas", "item": "Brotes de soja", "cantidad": 0.5, "unidad": "kg", "donde": "Verdulería", "nota": "arrolladitos" },
+    { "plato": "Entradas", "item": "Aceite para freír", "cantidad": 3, "unidad": "L", "donde": "Supermercado", "nota": "arrolladitos" },
+
+    { "plato": "Hot pot · proteínas", "item": "Cordero en láminas finas", "cantidad": 2, "unidad": "kg", "donde": "Carnicería", "nota": "pedir cortado como para fiambre, o congelar y cortar" },
+    { "plato": "Hot pot · proteínas", "item": "Carne vacuna en láminas (peceto / tapa de nalga)", "cantidad": 1.5, "unidad": "kg", "donde": "Carnicería", "nota": "" },
+    { "plato": "Hot pot · proteínas", "item": "Langostinos", "cantidad": 1, "unidad": "kg", "donde": "Pescadería", "nota": "" },
+    { "plato": "Hot pot · proteínas", "item": "Albóndigas de pescado o de carne", "cantidad": 1, "unidad": "kg", "donde": "Tienda china", "nota": "vienen congeladas" },
+    { "plato": "Hot pot · proteínas", "item": "Tofu firme", "cantidad": 1.5, "unidad": "kg", "donde": "Tienda china", "nota": "también para vegetarianos" },
+
+    { "plato": "Hot pot · verduras y fideos", "item": "Pak choi / bok choy", "cantidad": 2, "unidad": "kg", "donde": "Tienda china", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Akusay (repollo chino)", "cantidad": 2, "unidad": "unid.", "donde": "Verdulería", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Espinaca", "cantidad": 1, "unidad": "kg", "donde": "Verdulería", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Hongos (gírgolas, shiitake, champiñones)", "cantidad": 2, "unidad": "kg", "donde": "Verdulería", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Hongos enoki", "cantidad": 4, "unidad": "paq.", "donde": "Tienda china", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Nabo / daikon", "cantidad": 1, "unidad": "kg", "donde": "Verdulería", "nota": "" },
+    { "plato": "Hot pot · verduras y fideos", "item": "Fideos (de arroz, de batata o udon)", "cantidad": 2, "unidad": "kg", "donde": "Tienda china", "nota": "100 g por persona, para el final" },
+
+    { "plato": "Hot pot · caldos", "item": "Huesos (pollo y cerdo) para caldo", "cantidad": 5, "unidad": "kg", "donde": "Carnicería", "nota": "~25 L de caldo en total, contando rellenar las ollas" },
+    { "plato": "Hot pot · caldos", "item": "Base para hot pot picante (Sichuan)", "cantidad": 4, "unidad": "sobres", "donde": "Tienda china", "nota": "para el lado picante de las ollas yin-yang" },
+    { "plato": "Hot pot · caldos", "item": "Jengibre", "cantidad": 0.4, "unidad": "kg", "donde": "Verdulería", "nota": "" },
+    { "plato": "Hot pot · caldos", "item": "Cebolla de verdeo", "cantidad": 8, "unidad": "atados", "donde": "Verdulería", "nota": "caldos, rellenos y salsas" },
+    { "plato": "Hot pot · caldos", "item": "Ajo", "cantidad": 5, "unidad": "cabezas", "donde": "Verdulería", "nota": "caldos, rellenos y salsas" },
+    { "plato": "Hot pot · caldos", "item": "Anís estrellado, pimienta de Sichuan, chiles secos", "cantidad": 1, "unidad": "kit", "donde": "Tienda china", "nota": "~50 g de cada uno" },
+    { "plato": "Hot pot · caldos", "item": "Bayas de goji y dátiles chinos", "cantidad": 1, "unidad": "kit", "donde": "Tienda china", "nota": "opcional, para el caldo suave" },
+
+    { "plato": "Estación de salsas", "item": "Pasta de sésamo (o tahini)", "cantidad": 1, "unidad": "kg", "donde": "Tienda china", "nota": "la salsa clásica del hot pot de Pekín" },
+    { "plato": "Estación de salsas", "item": "Salsa de soja", "cantidad": 2, "unidad": "L", "donde": "Tienda china", "nota": "también para entradas" },
+    { "plato": "Estación de salsas", "item": "Aceite de sésamo", "cantidad": 0.5, "unidad": "L", "donde": "Tienda china", "nota": "" },
+    { "plato": "Estación de salsas", "item": "Vinagre negro (Chinkiang)", "cantidad": 0.5, "unidad": "L", "donde": "Tienda china", "nota": "para dumplings y salsas" },
+    { "plato": "Estación de salsas", "item": "Aceite de chile", "cantidad": 0.5, "unidad": "L", "donde": "Tienda china", "nota": "" },
+    { "plato": "Estación de salsas", "item": "Salsa de ostras", "cantidad": 0.5, "unidad": "L", "donde": "Tienda china", "nota": "" },
+    { "plato": "Estación de salsas", "item": "Cilantro", "cantidad": 4, "unidad": "atados", "donde": "Verdulería", "nota": "" },
+    { "plato": "Estación de salsas", "item": "Maní tostado picado", "cantidad": 0.5, "unidad": "kg", "donde": "Supermercado", "nota": "" },
+
+    { "plato": "Postre", "item": "A definir según la receta", "cantidad": null, "unidad": "", "donde": "", "nota": "ver acción «Averiguar receta de postre chino»" },
+
+    { "plato": "Bebidas", "item": "Té de jazmín u oolong", "cantidad": 0.2, "unidad": "kg", "donde": "Tienda china", "nota": "té caliente toda la noche" },
+    { "plato": "Bebidas", "item": "Cerveza (¿Tsingtao?)", "cantidad": 20, "unidad": "L", "donde": "Supermercado", "nota": "~1 L por persona" },
+    { "plato": "Bebidas", "item": "Agua", "cantidad": 15, "unidad": "L", "donde": "Supermercado", "nota": "" },
+    { "plato": "Bebidas", "item": "Licor chino (baijiu o vino de arroz) para el brindis", "cantidad": 1, "unidad": "botella", "donde": "Tienda china", "nota": "opcional, no se multiplica", "fijo": true },
+
+    { "plato": "Mesa", "item": "Bowls (comida + salsas)", "cantidad": 40, "unidad": "unid.", "donde": "Tienda china", "nota": "2 por persona" },
+    { "plato": "Mesa", "item": "Palillos", "cantidad": 25, "unidad": "pares", "donde": "Tienda china", "nota": "con repuesto" },
+    { "plato": "Mesa", "item": "Coladores-cucharón para hot pot", "cantidad": 10, "unidad": "unid.", "donde": "Tienda china", "nota": "2 por olla" },
+    { "plato": "Mesa", "item": "Servilletas", "cantidad": 2, "unidad": "paq.", "donde": "Supermercado", "nota": "" }
+  ]
+}

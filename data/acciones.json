@@ -183,6 +183,14 @@
       "responsable": "santi",
       "fecha_limite": "2026-10-29",
       "estado": "pendiente"
+    },
+    {
+      "id": 24,
+      "tarea": "Hacer las compras del 12/11 (lista en la sección Compras; lo no perecedero en la tienda china, carnes y verduras a último momento)",
+      "tipo": "logistica",
+      "responsable": "",
+      "fecha_limite": "2026-11-11",
+      "estado": "pendiente"
     }
   ]
 }

@@ -111,6 +111,13 @@
   #croquis .c-tenue { font-size: 14px; fill: var(--muted); font-style: italic; }
   #croquis .c-cotatxt { font-size: 13px; fill: var(--muted); }
   #croquis-notas .card ul { margin: 6px 0 0; padding-left: 18px; }
+  .compras { columns: 2 340px; column-gap: 24px; }
+  .compras .grupo { break-inside: avoid; margin-bottom: 18px; }
+  .compras h3 { font-size: 1.3rem; margin-bottom: 4px; }
+  .compras label { display: grid; grid-template-columns: 20px 1fr auto; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); cursor: pointer; align-items: baseline; }
+  .compras .cant { font-weight: 600; white-space: nowrap; }
+  .compras .n { grid-column: 2 / -1; color: var(--muted); font-size: .8rem; margin-top: -4px; }
+  .compras input:checked ~ span { text-decoration: line-through; color: var(--muted); }
   .sub-h { margin: 8px 0 14px; }
   @media (max-width: 640px) { .mapa svg { width: 760px; } }
 </style>
@@ -124,6 +131,7 @@
     <nav>
       <a href="#cuando">Cuándo y qué</a>
       <a href="#mesas">Mesas</a>
+      <a href="#compras">Compras</a>
       <a href="#ruta">Rompecabezas y ruta</a>
       <a href="#acciones">Acciones</a>
       <a href="#colaborar">Cómo sumar ideas</a>
@@ -147,6 +155,20 @@
     </div>
     <div class="croquis-wrap"><svg id="croquis" role="img" aria-label="Croquis de mesas"></svg></div>
     <div class="grid2" id="croquis-notas"></div>
+  </section>
+
+  <section id="compras">
+    <h2>Lista de compras</h2>
+    <p class="meta" id="compras-nota"></p>
+    <div class="map-tools">
+      <label>Personas <input type="number" id="compras-n" min="4" max="40" value="20" style="width:64px;font:inherit;padding:2px 6px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink)"></label>
+      <div class="filters" id="compras-agrupar">
+        <button class="on" data-g="plato">Por plato</button>
+        <button data-g="donde">Por lugar de compra</button>
+      </div>
+      <span class="meta">Los ✓ quedan guardados solo en tu navegador.</span>
+    </div>
+    <div id="compras-lista" class="compras"></div>
   </section>
 
   <section id="ruta">
@@ -358,6 +380,41 @@ function dibujarCroquis(v) {
 }
 document.getElementById("variante").addEventListener("click", e => { if (e.target.dataset.v) dibujarCroquis(e.target.dataset.v); });
 dibujarCroquis(20);
+
+// Lista de compras: escala las cantidades según la cantidad de personas
+function iniciarCompras(c) {
+  document.getElementById("compras-nota").textContent = `${c.evento}. ${c.notas}`;
+  let grupo = "plato";
+  const KEY = "marcopolo-compras";
+  const leer = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } };
+  const guardar = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} };
+  const redondear = (x, u) => (["kg", "L"].includes(u) ? Math.round(x * 10) / 10 : Math.ceil(x)).toLocaleString("es-AR");
+  const draw = () => {
+    const n = Math.max(1, +document.getElementById("compras-n").value || c.base_personas);
+    const k = n / c.base_personas, hechos = leer();
+    const grupos = {};
+    c.items.forEach((it, i) => (grupos[it[grupo] || "Sin definir"] ||= []).push([it, i]));
+    document.getElementById("compras-lista").innerHTML = Object.entries(grupos).map(([g, its]) => `
+      <div class="grupo"><h3>${esc(g)}</h3>${its.map(([it, i]) => `
+        <label><input type="checkbox" data-i="${i}" ${hechos[i] ? "checked" : ""}>
+          <span>${esc(it.item)}</span>
+          <span class="cant">${it.cantidad == null ? tbd() : redondear(it.fijo ? it.cantidad : it.cantidad * k, it.unidad) + " " + esc(it.unidad)}</span>
+          <span class="n">${esc(grupo === "plato" ? it.donde : it.plato)}${it.nota ? " · " + esc(it.nota) : ""}</span>
+        </label>`).join("")}</div>`).join("");
+  };
+  document.getElementById("compras-n").addEventListener("input", draw);
+  document.getElementById("compras-agrupar").addEventListener("click", e => {
+    if (!e.target.dataset.g) return;
+    grupo = e.target.dataset.g;
+    document.querySelectorAll("#compras-agrupar button").forEach(b => b.classList.toggle("on", b.dataset.g === grupo));
+    draw();
+  });
+  document.getElementById("compras-lista").addEventListener("change", e => {
+    const h = leer(); h[e.target.dataset.i] = e.target.checked; guardar(h);
+  });
+  draw();
+}
+fetch("data/compras.json").then(r => r.json()).then(iniciarCompras).catch(() => {});
 
 function abrirParada(p) {
   const li = document.getElementById("p-" + p.id);
